@@ -1,15 +1,21 @@
-import React, { useEffect } from "react";
-import { View, Dimensions, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Dimensions, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
 import Icon1 from "react-native-vector-icons/AntDesign";
 import Icon from "react-native-vector-icons/Octicons";
 
 import { Switch } from "react-native-switch";
 import BackImage from "../static/images/BackIcon.png";
 import { Avatar } from "react-native-paper";
+import FileInput from "./FileUpload";
+import * as Storage from "../utils/AsyncStorage";
+
 const { height: screenHeight, width: screenWidth } = Dimensions.get("window");
+
 // import {showSnackBar} from '../components/SnackBar';
 
-export default function NewCustomHeader() {
+export default function NewCustomHeader(props) {
+  const [loader, setLoader] = useState(false);
+  const [userImage, setImage] = useState(void 0);
   // useEffect(() => {
   //   showSnackBar({
   //     message: `Revenue View is ${switchVal ? 'on' : 'off'}`,
@@ -20,6 +26,19 @@ export default function NewCustomHeader() {
   //     backgroundColor: '#323232', //background color for snackbar
   //   });
   // }, [switchVal]);
+  const upload = async value => {
+    let { data, uri, name } = value;
+    setLoader(true);
+    let res = await Storage.set("userImage", uri);
+    let res2 = await Storage.get("userImage");
+    console.log("res2", res2);
+    setTimeout(() => {
+      setLoader(false);
+    }, 200);
+    setImage(res2);
+    return { name };
+  };
+  const { title = "My Feed", titleColor = "black", showAvtar = true } = props;
   return (
     <View
       style={{
@@ -32,8 +51,32 @@ export default function NewCustomHeader() {
         <Text style={styles.titleName}>{"TODAY"}</Text>
       </View>
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 8 }}>
-        <Text style={styles.headerName}>{"My Feed"}</Text>
-        <Avatar.Text size={30} label="AP" />
+        <Text style={{ ...styles.headerName, color: titleColor }}>{title}</Text>
+        {showAvtar ? (
+          <>
+            {userImage ? (
+              <FileInput
+                browseComponent={
+                  <Image style={{ width: 24, height: 24, borderRadius: 15 }} source={{ uri: userImage }} />
+                }
+                data={{}}
+                field={"userImage"}
+                onlyImage={true}
+                upload={upload}
+              />
+            ) : loader ? (
+              <ActivityIndicator size="small" color="red" />
+            ) : (
+              <FileInput
+                browseComponent={<Avatar.Text size={24} label="AP" />}
+                data={{}}
+                field={"userImage"}
+                onlyImage={true}
+                upload={upload}
+              />
+            )}
+          </>
+        ) : null}
       </View>
     </View>
   );
@@ -44,8 +87,6 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSans",
     fontSize: 12,
     fontStyle: "normal",
-    // lineHeight: 'normal',
-    // letterSpacing: 'normal',
     textAlign: "left",
     color: "black"
   },
@@ -54,9 +95,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     fontStyle: "normal",
-    // lineHeight: 'normal',
-    // letterSpacing: 'normal',
-    textAlign: "left",
-    color: "black"
+    textAlign: "left"
   }
 });

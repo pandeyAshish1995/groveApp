@@ -12,7 +12,6 @@ const VideoScreen = props => {
     const {
       data: { videos = [] }
     } = await APICaller({ method: "get", url: "https://private-c31a5-task27.apiary-mock.com/videos" });
-
     setData(videos);
   };
 
@@ -21,7 +20,7 @@ const VideoScreen = props => {
   }, []);
   
   const { containerStyle } = styles;
-  console.log("datadata", data);
+  // console.log("datadata", data);
   return (
     <View style={containerStyle}>
       <HeaderComponent />

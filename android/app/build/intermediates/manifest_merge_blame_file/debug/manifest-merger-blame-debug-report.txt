@@ -11,61 +11,90 @@
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 11-->/home/bhuwan/Desktop/grove_app/android/app/src/debug/AndroidManifest.xml:5:5-77
 11-->/home/bhuwan/Desktop/grove_app/android/app/src/debug/AndroidManifest.xml:5:22-75
-12    <uses-permission android:name="android.permission.INTERNET" />
-12-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:4:5-67
-12-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:4:22-64
-13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-13-->[com.facebook.flipper:flipper:0.37.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:5-76
-13-->[com.facebook.flipper:flipper:0.37.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:22-73
-14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-14-->[com.google.android.exoplayer:exoplayer-core:2.11.4] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/8a9e12f0ea8aa388ed9610f918504e49/jetified-exoplayer-core-2.11.4/AndroidManifest.xml:24:5-79
-14-->[com.google.android.exoplayer:exoplayer-core:2.11.4] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/8a9e12f0ea8aa388ed9610f918504e49/jetified-exoplayer-core-2.11.4/AndroidManifest.xml:24:22-76
-15
-16    <application
-16-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:6:5-25:19
-17        android:name="com.groove_native.MainApplication"
-17-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:7:7-38
-18        android:allowBackup="false"
-18-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:11:7-34
-19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.1.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:18-86
-20        android:debuggable="true"
-21        android:icon="@mipmap/ic_launcher"
-21-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:9:7-41
-22        android:label="@string/app_name"
-22-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:8:7-39
-23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:10:7-52
-24        android:theme="@style/AppTheme"
-24-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:12:7-38
-25        android:usesCleartextTraffic="true" >
-25-->/home/bhuwan/Desktop/grove_app/android/app/src/debug/AndroidManifest.xml:7:18-53
-26        <activity
-26-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:13:7-23:18
-27            android:name="com.groove_native.MainActivity"
-27-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:14:9-37
-28            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-28-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:16:9-86
-29            android:label="@string/app_name"
-29-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:15:9-41
-30            android:launchMode="singleTask"
-30-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:17:9-40
-31            android:windowSoftInputMode="adjustResize" >
-31-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:18:9-51
-32            <intent-filter>
-32-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:19:9-22:25
-33                <action android:name="android.intent.action.MAIN" />
-33-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:20:13-65
-33-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:20:21-62
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:21:13-73
-35-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:21:23-70
-36            </intent-filter>
-37        </activity>
-38        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-38-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:24:7-84
-38-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:24:17-81
-39    </application>
-40
-41</manifest>
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:3:5-79
+12-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:3:22-76
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:4:5-81
+13-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:4:22-78
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:5:5-80
+14-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:5:22-77
+15    <uses-permission android:name="android.permission.CAMERA" />
+15-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:6:5-65
+15-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:6:22-62
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:7:5-67
+16-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:7:22-64
+17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+17-->[com.facebook.flipper:flipper:0.37.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:5-76
+17-->[com.facebook.flipper:flipper:0.37.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:22-73
+18
+19    <application
+19-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:9:5-29:19
+20        android:name="com.groove_native.MainApplication"
+20-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:10:7-38
+21        android:allowBackup="false"
+21-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:14:7-34
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.1.0] /home/bhuwan/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:12:7-41
+25        android:label="@string/app_name"
+25-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:11:7-39
+26        android:requestLegacyExternalStorage="true"
+26-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:15:7-50
+27        android:roundIcon="@mipmap/ic_launcher_round"
+27-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:13:7-52
+28        android:theme="@style/AppTheme"
+28-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:16:7-38
+29        android:usesCleartextTraffic="true" >
+29-->/home/bhuwan/Desktop/grove_app/android/app/src/debug/AndroidManifest.xml:7:18-53
+30        <activity
+30-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:17:7-27:18
+31            android:name="com.groove_native.MainActivity"
+31-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:18:9-37
+32            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+32-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:20:9-86
+33            android:label="@string/app_name"
+33-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:19:9-41
+34            android:launchMode="singleTask"
+34-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:21:9-40
+35            android:windowSoftInputMode="adjustResize" >
+35-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:22:9-51
+36            <intent-filter>
+36-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:23:9-26:25
+37                <action android:name="android.intent.action.MAIN" />
+37-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:24:13-65
+37-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:24:21-62
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:25:13-73
+39-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:25:23-70
+40            </intent-filter>
+41        </activity>
+42        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+42-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:28:7-84
+42-->/home/bhuwan/Desktop/grove_app/android/app/src/main/AndroidManifest.xml:28:17-81
+43
+44        <provider
+44-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:9-18:20
+45            android:name="com.imagepicker.FileProvider"
+45-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-56
+46            android:authorities="com.groove_native.provider"
+46-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-60
+47            android:exported="false"
+47-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
+48            android:grantUriPermissions="true" >
+48-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-47
+49            <meta-data
+49-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-17:58
+50                android:name="android.support.FILE_PROVIDER_PATHS"
+50-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-67
+51                android:resource="@xml/provider_paths" />
+51-->[:react-native-image-picker] /home/bhuwan/Desktop/grove_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-55
+52        </provider>
+53    </application>
+54
+55</manifest>

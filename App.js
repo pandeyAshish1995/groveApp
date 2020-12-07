@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StatusBar, Platform, View } from "react-native";
+import { StatusBar, Platform, View, KeyboardAvoidingView } from "react-native";
 import AppNavigator from "./src/navigators/AppNavigator";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";

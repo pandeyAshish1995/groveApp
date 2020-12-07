@@ -1,12 +1,27 @@
 import React, { useState } from "react";
-import { FlatList, View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import { FlatList, View, Text, StyleSheet, ActivityIndicator,TouchableOpacity } from "react-native";
 import VideoPlay from "../components/VideoPlayer";
 
 const TitleComponent = ({ title }) => {
   return (
-    <Text style={{ position: "absolute", bottom: -5, backgroundColor: "white", borderRadius: 10, width: "100%" }}>
-      {title}
-    </Text>
+    <View
+      style={{
+        paddingHorizontal: 10,
+        position: "absolute",
+        width: "100%",
+        bottom: 0,
+        borderRadius: 25,
+        backgroundColor: "white",
+        elevation: 1
+      }}
+    >
+      <View style={{ flexDirection: "row", paddingTop: 5, justifyContent: "space-between" }}>
+        <Text style={{ color: "rgba(4, 74, 174,0.8)" }}>{"new"}</Text>
+        <Text>{"date"}</Text>
+      </View>
+      <Text style={{ fontSize: 20, fontWeight: "100" }}>{title}</Text>
+      <Text style={{ fontSize: 12, paddingBottom: 10 }}>{"sample text"}</Text>
+    </View>
   );
 };
 
@@ -18,53 +33,54 @@ const RenderFooter = ({ loading }) => {
 const ItemComponent = ({ item }) => {
   const { thumbnail_url, video_url, title } = item || {};
   return (
-    <View style={{ ...styles.item, borderRadius: 10 }}>
-      <VideoPlay thumbnail_url={thumbnail_url} video_url={video_url} />
+    <View style={styles.itemContainer}  >
+      <View style={{ borderRadius: 25, paddingBottom: 68 }}>
+        <VideoPlay thumbnail_url={thumbnail_url} video_url={video_url} />
+      </View>
       <TitleComponent title={title} />
     </View>
   );
 };
 
 const VideoComponent = ({ data = [] }) => {
-    
   const [refreshing, setRefreshing] = useState(false);
-  const [listData, setListData] = useState(data);
+  const [listData, setListData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [selected, setSelected] = useState(false);
 
   const onRefresh = () => {
     setRefreshing(true);
-    console.warn("data", listData.length);
-    setListData(listData.concat(listData[0]))
-     console.warn("data after", listData.length);
+
     setTimeout(() => {
       setRefreshing(false);
-    }, 1000);
+      setListData(data);
+    }, 10);
 
-     setSelected(true);
+    setSelected(true);
   };
-  const loadMore=()=>{
+  const loadMore = () => {
     setLoading(true);
-    setListData(listData.concat(listData[0]))
+   
     setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-  }
+      setListData(listData.concat(listData.length ? listData : data));
+      setLoading(false);
+    }, 1000);
+  };
 
   const renderItem = ({ item }) => <ItemComponent item={item} />;
-  
+
   return (
     <FlatList
-      data={data}
-    //   onEndReached={() => {
-    //     loadMore();
-    //   }}
-    //   onEndReachedThreshold={0}
-    //   onRefresh={() => onRefresh()}
-    //   refreshing={refreshing}
-    //   extraData={selected}
-      keyExtractor={(item, index) =>index}
+      data={listData.length ? listData : data}
+      onEndReached={() => {
+        loadMore();
+      }}
+      onEndReachedThreshold={0}
+      onRefresh={() => onRefresh()}
+      refreshing={refreshing}
+      extraData={selected}
+      keyExtractor={(item, index) => index.toString()}
       ListFooterComponent={() => <RenderFooter loading={loading} />}
       renderItem={renderItem}
     />
@@ -77,15 +93,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  item: {
-    backgroundColor: "white",
+  itemContainer: {
     // borderRadius:5,
-    // padding: 20,
     marginVertical: 8,
-    paddingBottom: 40,
-
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
+    // borderTopRightRadius: 25,
+    // borderTopLeftRadius: 25,
     marginHorizontal: 16
   },
   title: {
