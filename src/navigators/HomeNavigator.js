@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Overview, Setting, VideoScreen,Strips } from "../screens";
+import { VideoScreen,Strips } from "../screens";
 
 import InactiveHomeIcon from "../static/images/Homewhite.png";
 import ActiveAppsIcon from "../static/images/ActiveAppsIcon.svg";

@@ -1,44 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { View, Dimensions, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
-import Icon1 from "react-native-vector-icons/AntDesign";
-import Icon from "react-native-vector-icons/Octicons";
-
-import { Switch } from "react-native-switch";
-import BackImage from "../static/images/BackIcon.png";
 import { Avatar } from "react-native-paper";
 import FileInput from "./FileUpload";
 import * as Storage from "../utils/AsyncStorage";
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get("window");
 
-// import {showSnackBar} from '../components/SnackBar';
-
 export default function NewCustomHeader(props) {
   const [loader, setLoader] = useState(false);
   const [userImage, setImage] = useState(void 0);
-  // useEffect(() => {
-  //   showSnackBar({
-  //     message: `Revenue View is ${switchVal ? 'on' : 'off'}`,
-  //     textColor: '#FFF', // message text color
-  //     position: 'bottom', // enum(top/bottom).
-  //     duration: 2000, // (in ms), duartion for which snackbar is visible.
-  //     animationTime: 200, // time duration in which snackbar will complete its open/close animation.
-  //     backgroundColor: '#323232', //background color for snackbar
-  //   });
-  // }, [switchVal]);
+  const getImageData = async () => {
+    const imgsrc = await Storage.get("userImage");
+    setImage(imgsrc);
+  };
+
+  useEffect(() => {
+    getImageData();
+  }, []);
   const upload = async value => {
-    let { data, uri, name } = value;
+    let {  uri, name } = value;
     setLoader(true);
-    let res = await Storage.set("userImage", uri);
-    let res2 = await Storage.get("userImage");
-    console.log("res2", res2);
-    setTimeout(() => {
-      setLoader(false);
-    }, 200);
-    setImage(res2);
+    let setImageres = await Storage.set("userImage", uri);
+    getImageData();
     return { name };
   };
-  const { title = "My Feed", titleColor = "black", showAvtar = true } = props;
+  const { title = "My Feed", titleColor = "black", showAvtar = true, nextComponent = null } = props;
   return (
     <View
       style={{
@@ -47,8 +33,9 @@ export default function NewCustomHeader(props) {
         paddingHorizontal: 15
       }}
     >
-      <View style={{ marginBottom: 8 }}>
-        <Text style={styles.titleName}>{"TODAY"}</Text>
+      <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 8 }}>
+        <View style={{ flex: 1 }}>{showAvtar ? <Text style={styles.titleName}>{"TODAY"}</Text> : null}</View>
+        {nextComponent}
       </View>
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 8 }}>
         <Text style={{ ...styles.headerName, color: titleColor }}>{title}</Text>

@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Dimensions, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 
 import HeaderComponent from "../components/HeaderComponent";
-import APICaller from "../utils/APICaller";
+import Loader from "../components/Loader";
 import VideoComponent from "./VideoComponent";
+import { connect } from "react-redux";
+import { fetchPosts } from "../redux/actions/VideoAction";
 
 const VideoScreen = props => {
-  const [data, setData] = useState([]);
-
-  const getData = async () => {
-    const {
-      data: { videos = [] }
-    } = await APICaller({ method: "get", url: "https://private-c31a5-task27.apiary-mock.com/videos" });
-    setData(videos);
+  const getData = () => {
+    props.getPosts();
   };
 
   useEffect(() => {
     getData();
   }, []);
-  
-  const { containerStyle } = styles;
-  // console.log("datadata", data);
+
+  const { containerStyle, indicatorContainerStyle } = styles;
+  const { videoData = [], loading } = props || {};
   return (
     <View style={containerStyle}>
       <HeaderComponent />
-      <VideoComponent  data={data} />
+      <Loader loader={loading} />
+      <VideoComponent data={videoData} />
     </View>
   );
 };
+const mapStateToProps = state => state.video;
+const mapDispatchToProps = { getPosts: fetchPosts };
 
-export default VideoScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(VideoScreen);
 
 const styles = StyleSheet.create({
   bottomText: {
@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: "bold",
     color: "#8689a4"
+  },
+  indicatorContainerStyle: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
   containerStyle: {
     backgroundColor: "#efeff5",
