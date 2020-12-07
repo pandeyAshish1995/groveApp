@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, TextInput, ScrollView, KeyboardAvoidingView, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, ScrollView, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import HeaderComponent from "../components/HeaderComponent";
 import Loader from "../components/Loader";
 import { connect } from "react-redux";
 import { fetchStrips } from "../redux/actions/StripAction";
+import color from "../styles/colors";
 
 class StripsScreen extends React.Component {
-  state = { data: [], selectedColorValue: null };
+  state = { data: [] };
   componentDidMount = () => {
     this.props.getData();
   };
@@ -134,7 +135,9 @@ class StripsScreen extends React.Component {
     );
   };
   render() {
-    let { stripData = [], loading } = this.props;
+    const { stripData = [], loading } = this.props;
+    const { modalVisible, data, ...rest } = this.state;
+
     return (
       <>
         <HeaderComponent
@@ -143,14 +146,39 @@ class StripsScreen extends React.Component {
           showAvtar={false}
           nextComponent={
             <TouchableOpacity
+              style={styles.buttonStyle}
               onPress={() => {
-                console.warn("next is clicked");
+                this.setState({ modalVisible: true });
               }}
             >
-              <Text>next</Text>
+              <Text style={{ color: "white", fontSize: 12 }}>Next</Text>
             </TouchableOpacity>
           }
         />
+
+        {modalVisible ? (
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              this.setState({ modalVisible: false });
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={1}
+              style={styles.modalContainer}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+              }}
+            >
+              <TouchableOpacity style={styles.modal} onPress={e => e.preventDefault()} activeOpacity={1}>
+                <Text>{JSON.stringify(rest)}</Text>
+              </TouchableOpacity>
+            </TouchableOpacity>
+          </Modal>
+        ) : null}
+
         <ScrollView style={{ margin: 10, flex: 1 }}>
           {stripData && stripData.length
             ? stripData.map((val, index) => {
@@ -173,3 +201,27 @@ const mapStateToProps = state => state.strips;
 const mapDispatchToProps = { getData: fetchStrips };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StripsScreen);
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  buttonStyle: {
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+    backgroundColor: color.customGreyColorWithOpacity(0.8)
+  },
+  modal: {
+    backgroundColor: "white",
+    marginHorizontal: 10,
+    borderRadius: 10,
+    padding: 15,
+    height: 300,
+    minWidth: "80%"
+  }
+});
