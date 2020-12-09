@@ -89,7 +89,9 @@ class StripsScreen extends React.Component {
                 width: 60,
                 alignItems: "center",
                 height: 30,
-                fontSize: 7,
+                paddingTop:0,
+                paddingBottom:0,
+                fontSize: 13,
                 borderRadius: 4,
                 borderWidth: 1,
                 borderColor: "#80808047"
