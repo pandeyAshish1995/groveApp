@@ -179,7 +179,7 @@ class StripsScreen extends React.Component {
           </Modal>
         ) : null}
 
-        <ScrollView style={{ margin: 10, flex: 1 }}>
+        <ScrollView bounces={false} style={{ margin: 10, flex: 1 }}>
           {stripData && stripData.length
             ? stripData.map((val, index) => {
                 if (val.values && val.values.length) {

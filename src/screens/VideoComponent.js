@@ -8,7 +8,7 @@ const TitleComponent = ({ title }) => {
     <View style={container}>
       <View style={bottomSecContainer}>
         <Text style={newTextStyle}>{"new"}</Text>
-        <Text>{"date"}</Text>
+        <Text>{new Date().toLocaleDateString()}</Text>
       </View>
       <Text style={titleStyle}>{title}</Text>
       <Text style={sampletextStyle}>{"sample text"}</Text>
@@ -66,6 +66,7 @@ const VideoComponent = ({ data = [] }) => {
       onEndReached={() => {
         loadMore();
       }}
+      bounce={false}
       onEndReachedThreshold={0}
       onRefresh={() => onRefresh()}
       refreshing={refreshing}
@@ -98,7 +99,7 @@ const titleStyles = StyleSheet.create({
     paddingHorizontal: 10,
     position: "absolute",
     width: "100%",
-    bottom: 0,
+    bottom: -4,
     borderRadius: 25,
     backgroundColor: "white",
     elevation: 1

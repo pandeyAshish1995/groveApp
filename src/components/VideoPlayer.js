@@ -18,6 +18,7 @@ class VideoPlayerComponent extends React.Component {
 
     return (
       <TouchableOpacity
+        activeOpacity={1}
         onLongPress={() => {
           this.onShare({ video_url });
         }}
